@@ -11,5 +11,9 @@
     "url": "https://gitlab.rlp.net/lrbw1108906222/web-entwicklung-hausarbeit.git"
   },
   "author": "Lara Biewers, Niklas Rose",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.53.0",
+    "eslint-plugin-sonarjs": "^0.23.0"
+  }
 }
