@@ -20,3 +20,5 @@ Abgabe erfolgt über StudIP
 main verweist auf Einstiegspunkt in Browseranwendung -> später bundle.js (esbuild)
 
 less-plugin-clean-css weist 2 vulnerabilities auf -> Behebung nicht möglich
+
+npm install –D lesshint (lesshint-reporter-stylish) wirft "moderate und schwere Fehler"?! -> großer Einfluss auf das Projekt?
