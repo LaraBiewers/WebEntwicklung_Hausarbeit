@@ -13,9 +13,11 @@
   "author": "Lara Biewers, Niklas Rose",
   "license": "ISC",
   "devDependencies": {
+    "esbuild": "^0.19.5",
     "eslint": "^8.53.0",
     "eslint-plugin-sonarjs": "^0.23.0",
     "semistandard": "^17.0.0",
-    "snazzy": "^9.0.0"
+    "snazzy": "^9.0.0",
+    "terser": "^5.24.0"
   }
 }
