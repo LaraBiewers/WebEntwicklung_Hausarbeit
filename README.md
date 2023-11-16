@@ -15,4 +15,4 @@ Abgabe erfolgt über StudIP
 
 ## NOTIZEN
 
-package.jason -> main standardmäßig index.js -> Abändern nötig oder nicht?
+package.jason -> main verweist auf Einstiegspunkt in Browseranwendung -> später bundle.js (esbuild)
