@@ -12,3 +12,7 @@ Endabgabe -> 26.02.2024 0:00 Uhr
 Abgabe erfolgt über StudIP
 + Bereinigtes Projekt als ZIP-Datei
 + Dateinamen mit lesbaren Namen der Teilnehmer versehen
+
+## NOTIZEN
+
+package.jason -> main standardmäßig index.js -> Abändern nötig oder nicht?

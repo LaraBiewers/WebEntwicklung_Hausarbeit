@@ -1,0 +1,15 @@
+{
+  "name": "packages-web-entwicklung-hausarbeit",
+  "version": "1.0.0",
+  "description": "Hausarbeit Web-Entwicklung WS23/24 - Webanwendung zur Suche von gefälligen Vornamen",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.rlp.net/lrbw1108906222/killing-bill.git"
+  },
+  "author": "Lara Biewers, Niklas Rose",
+  "license": "ISC"
+}
