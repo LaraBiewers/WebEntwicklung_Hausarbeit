@@ -15,4 +15,8 @@ Abgabe erfolgt über StudIP
 
 ## NOTIZEN
 
-package.jason -> main verweist auf Einstiegspunkt in Browseranwendung -> später bundle.js (esbuild)
+### package.json
+
+main verweist auf Einstiegspunkt in Browseranwendung -> später bundle.js (esbuild)
+
+less-plugin-clean-css weist 2 vulnerabilities auf -> Behebung nicht möglich
