@@ -4,12 +4,37 @@
   "description": "Hausarbeit Web-Entwicklung WS23/24 - Webanwendung zur Suche von gefälligen Vornamen",
   "main": "bundle.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "npm run clean:build && rm -rf node_modules",
+    "clean:build": "rm -rf frontend/build",
+    "lint": "semistandard --verbose frontend/src/js/**/*.mjs | snazzy && lesshint --reporter lesshint-reporter-stylish frontend/src/styles",
+    "format": "semistandard --verbose --fix frontend/src/js/**/*.mjs | snazzy",
+    "predebug": "npm run lint && npm run clean:build",
+    "debug": "npm run html && npm run css && npm run js",
+    "build": "npm run debug && npm run minify",
+    "html": "mkdirp -p frontend/build && cp frontend/src/index.html frontend/build/index.html",
+    "css": "mkdirp -p frontend/build && lessc frontend/src/styles/style.less frontend/build/style.css",
+    "js": "mkdirp -p frontend/build && esbuild frontend/src/js/Main.mjs --log-level=warning --bundle --outfile=frontend/build/bundle.js",
+    "minify": "npm run minify:css && npm run minify:js",
+    "minify:css": "lessc --clean-css frontend/build/style.css frontend/build/style.css",
+    "minify:js": "terser frontend/build/bundle.js --compress --mangle --comments=false -o frontend/build/bundle.js",
+    "initdb" : "",
+    "start": "http-server frontend/build"
   },
   "repository": {
     "type": "git",
     "url": "https://gitlab.rlp.net/lrbw1108906222/web-entwicklung-hausarbeit.git"
   },
   "author": "Lara Biewers, Niklas Rose",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.19.8",
+    "less": "^4.2.0",
+    "less-plugin-clean-css": "^1.5.1",
+    "lesshint": "^6.3.7",
+    "lesshint-reporter-stylish": "^3.0.0",
+    "mkdirp": "^3.0.1",
+    "semistandard": "^17.0.0",
+    "snazzy": "^9.0.0",
+    "terser": "^5.25.0"
+  }
 }
