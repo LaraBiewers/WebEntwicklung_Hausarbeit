@@ -15,4 +15,15 @@ Abgabe erfolgt über StudIP
 
 ## NOTIZEN
 
-package.jason -> main verweist auf Einstiegspunkt in Browseranwendung -> später bundle.js (esbuild)
+### package.json
+
+main verweist auf Einstiegspunkt in Browseranwendung -> später bundle.js (esbuild)
+
+lesshint (lesshint-reporter-stylish) wirft "moderate und schwere Fehler" -> großer Einfluss auf das Projekt?
+
+npm audit fix --force bricht ab -> unknown git error
+lesshint@1.5.2 statt "^6.3.7" installieren?
+
+### .less Dateien
+
+Um eine .less-Datei in eine HTML-Datei einzubinden, musst sie zunächst in CSS kompiliert werden.
