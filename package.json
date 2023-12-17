@@ -18,7 +18,7 @@
     "minify:css": "lessc --clean-css frontend/build/style.css frontend/build/style.css",
     "minify:js": "terser frontend/build/bundle.js --compress --mangle --comments=false -o frontend/build/bundle.js",
     "initdb": "",
-    "start": "http-server frontend/build"
+    "start": "node backend/src/server.mjs"
   },
   "repository": {
     "type": "git",
