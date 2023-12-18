@@ -1,7 +1,7 @@
 import express from 'express';
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.argv[2] || 8080;
 
 app.use(express.static('frontend/build'));
 
