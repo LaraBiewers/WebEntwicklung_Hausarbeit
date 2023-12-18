@@ -19,10 +19,8 @@ Abgabe erfolgt über StudIP
 
 main verweist auf Einstiegspunkt in Browseranwendung -> später bundle.js (esbuild)
 
-lesshint (lesshint-reporter-stylish) wirft "moderate und schwere Fehler" -> großer Einfluss auf das Projekt?
-
-npm audit fix --force bricht ab -> unknown git error
-lesshint@1.5.2 statt "^6.3.7" installieren?
+*FÜR PV:*
+npm install && npm run initdb && npm run build && npm start
 
 ### .less Dateien
 

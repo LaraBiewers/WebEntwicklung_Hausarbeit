@@ -17,7 +17,7 @@
     "minify": "npm run minify:css && npm run minify:js",
     "minify:css": "lessc --clean-css frontend/build/style.css frontend/build/style.css",
     "minify:js": "terser frontend/build/bundle.js --compress --mangle --comments=false -o frontend/build/bundle.js",
-    "initdb": "",
+    "initdb": "echo 'Wird noch implementiert'",
     "start": "node backend/src/server.mjs"
   },
   "repository": {
