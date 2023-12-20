@@ -19,9 +19,14 @@ Abgabe erfolgt über StudIP
 
 main verweist auf Einstiegspunkt in Browseranwendung -> später bundle.js (esbuild)
 
-*FÜR PV:*
-npm install && npm run initdb && npm run build && npm start
+*FÜR PV:* <br>
+npm install && npm run initdb && npm run build && npm start <br>
+(Server schließen mit Strg+c)
 
 ### .less Dateien
 
 Um eine .less-Datei in eine HTML-Datei einzubinden, musst sie zunächst in CSS kompiliert werden.
+
+### Datenbank und Server
+
+insertMany -> initial befüllen (csv -> json)
