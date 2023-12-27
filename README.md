@@ -20,7 +20,7 @@ Abgabe erfolgt über StudIP
 main verweist auf Einstiegspunkt in Browseranwendung -> später bundle.js (esbuild)
 
 *FÜR PV:* <br>
-npm install && npm run initdb && npm run build && npm start <br>
+npm install && npm run initdb && npm run build && npm start \<Portnummer nach Wunsch\><br>
 (Server schließen mit Strg+c)
 
 ### .less Dateien
