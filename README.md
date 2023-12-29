@@ -4,7 +4,7 @@ Verwendung von **MongoDB** zur persistierung der Ressourcen.
 
 Alle nötigen Anforderungen sind unter ./Informationen/HausarbeitWS2324.pdf zu finden.
 
-## Deadlines
+## Abgabeinformationen
 
 Studienleistung -> 02.01.2024 0:00 Uhr
 Endabgabe -> 26.02.2024 0:00 Uhr
@@ -23,10 +23,14 @@ main verweist auf Einstiegspunkt in Browseranwendung -> später bundle.js (esbui
 npm install && npm run initdb && npm run build && npm start \<Portnummer nach Wunsch\><br>
 (Server schließen mit Strg+c)
 
-### .less Dateien
-
-Um eine .less-Datei in eine HTML-Datei einzubinden, musst sie zunächst in CSS kompiliert werden.
-
 ### Datenbank und Server
 
-insertMany -> initial befüllen (csv -> json)
+https://www.mongodb.com/docs/manual/administration/install-community/
+
+#### Ausführen unter WSL2
+
+Start MongoDB: sudo systemctl start mongod <br>
+Verify that MongoDB has started successfully: sudo systemctl status mongod <br>
+Stop MongoDB: sudo systemctl stop mongod <br>
+Restart MongoDB: sudo systemctl restart mongod <br>
+Begin using MongoDB: mongosh <br>
