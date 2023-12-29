@@ -1,7 +1,60 @@
 import fs from 'fs';
+import csv from 'csv-parser';
 import { MongoClient } from 'mongodb';
 import syllabificate from 'syllabificate';
 
+const names_csv = 'backend/src/assets/Gesamt_Vornamen_Koeln_2010_2022_cleaned.csv';
+
+
+(async function () {
+  let client = null;
+
+  try {
+    client = new MongoClient('mongodb://127.0.0.1:27017/');
+    await client.connect();
+    console.log("connection etablished");
+  }
+  catch (error) {
+    console.log(`Failed to connect to MongoDB: ${error}`);
+    process.exit(-1);
+  }
+
+  try {
+    await fillData(client, names_csv);
+  } catch (error) {
+    console.log(error);
+  }
+})();
+
+async function fillData(client, csv_path){
+  const db = client.db("test");
+  const collection = db.collection("names");
+  const promises = [];
+ 
+  console.log("seeding");
+  return new Promise((resolve, reject) => {
+    fs.createReadStream(csv_path)
+      .pipe(csv({ separator: ';' }))
+      .on('data', (row) => {
+        let syllables = syllabificate.countSyllables(row['vorname']);
+        let promise = collection.insertOne({ name: row['vorname'], geschlecht: row['geschlecht'], silben: syllables });
+        promises.push(promise);
+      })
+      .on('end', async () => {
+        try {
+          await Promise.all(promises);
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+        client.close();
+      })
+      .on('error', reject);
+  });
+ }
+ 
+
+/*
 // Lese die CSV-Datei ein
 
 let rows = 0;
@@ -19,7 +72,7 @@ try {
   let client = null;
 
   try {
-    client = new MongoClient('mongodb://localhost:27017');
+    client = new MongoClient('mongodb://127.0.0.1:27017/');
     await client.connect();
   } catch (error) {
     console.error(error);
@@ -67,3 +120,4 @@ try {
     await client.close();
   }
 })();
+*/
