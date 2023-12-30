@@ -41,8 +41,8 @@ async function fillData(client, csv_path) {
     }
   } catch (error) {
     console.log(error);
-    process.exit(-1);
     client.close();
+    process.exit(-1);
   }
   const collection = db.collection("names");
   const promises = [];
