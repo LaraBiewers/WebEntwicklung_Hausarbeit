@@ -2,6 +2,7 @@ import fs from 'fs';
 import csv from 'csv-parser';
 import { MongoClient } from 'mongodb';
 import syllabificate from 'syllabificate';
+import { error } from 'console';
 
 const names_csv = 'backend/src/assets/Gesamt_Vornamen_Koeln_2010_2022_cleaned.csv';
 
@@ -26,11 +27,25 @@ const names_csv = 'backend/src/assets/Gesamt_Vornamen_Koeln_2010_2022_cleaned.cs
   }
 })();
 
-async function fillData(client, csv_path){
-  const db = client.db("test");
+async function fillData(client, csv_path) {
+  const db = client.db("nameDB");
+  try {
+    const collections = await db.listCollections().toArray();
+    const namesCollectionExists = collections.some(col => col.name === "names");
+    if (namesCollectionExists) {
+      if (await db.collection("names").drop()){
+        console.log("database cleaned")
+      } else {
+        throw error("Something went wrong with the cleaning of the database");
+      }
+    }
+  } catch (error) {
+    console.log(error);
+    process.exit(-1);
+  }
   const collection = db.collection("names");
   const promises = [];
- 
+
   console.log("seeding");
   return new Promise((resolve, reject) => {
     fs.createReadStream(csv_path)
@@ -51,8 +66,8 @@ async function fillData(client, csv_path){
       })
       .on('error', reject);
   });
- }
- 
+}
+
 
 /*
 // Lese die CSV-Datei ein
