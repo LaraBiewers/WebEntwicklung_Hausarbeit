@@ -1,3 +1,8 @@
+# Inhaber
+
+Lara Biewers: lrbw1108
+Niklas Rose: nkrs2321
+
 # Web-Entwicklung Hausarbeit
 
 Verwendung von **MongoDB** zur persistierung der Ressourcen.
