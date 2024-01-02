@@ -39,3 +39,7 @@ Verify that MongoDB has started successfully: sudo systemctl status mongod <br>
 Stop MongoDB: sudo systemctl stop mongod <br>
 Restart MongoDB: sudo systemctl restart mongod <br>
 Begin using MongoDB: mongosh <br>
+
+#### Extension MongoDB
+
+Läuft am besten wenn man als Terminal "git bash" nutzt.
