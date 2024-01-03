@@ -1,0 +1,5 @@
+GET http://localhost:8080/names
+
+###
+
+GET http://localhost:8080/names/?skip=9000&limit=10
