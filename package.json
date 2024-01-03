@@ -11,7 +11,7 @@
     "lint:backend": "semistandard --verbose backend/src/js/**/*.mjs | snazzy",
     "format": "npm run format:frontend && npm run format:backend",
     "format:frontend": "semistandard --verbose --fix frontend/src/js/**/*.mjs | snazzy",
-    "format:backend": "semistandard --verbose --fix backend/src/js/**/*.mjs | snazzy",
+    "format:backend": "semistandard --verbose --fix backend/src/**/**/*.mjs | snazzy",
     "predebug": "npm run lint && npm run clean:build",
     "debug": "npm run html && npm run css && npm run js && npm run assets",
     "build": "npm run debug && npm run minify",
