@@ -1,16 +1,56 @@
-@background-color: #ffffff;
+@headHeight: 15rem;
+@footHeight: 5rem;
+@headAndFootWidth: 100%;
+@contentWidth: 100%;
+
+@font-family: sans-serif;
+@font-size: 16pt;
+
+@headAndFootColor: #BF7B3F;
+@background-color: #ffffff85;
+@text-color: black;
 @button-color: #4C7326;
 
+body {
+  font-family: @font-family;
+  font-size: @font-size;
+}
+
+header {
+  background-color: @headAndFootColor;
+  height: @headHeight;
+  width: @headAndFootWidth;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+#flex-header {
+  height: @headHeight;
+  width: @headAndFootWidth;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 main {
-  color: black;
+  margin-top: @headHeight;
+  background-color: @background-color;
+  color: @text-color;
+}
+
+footer {
+  background-color: @headAndFootColor;
+  height: @footHeight;
+  width: @headAndFootWidth;
 }
 
 button {
+  font-size: @font-size;
+  font-family: @font-family;
   background-color: @button-color;
-  /* Abrundung der Ecken */
   border-radius: 5px;
-  /* Textfarbe */
-  color: black;
+  color: @text-color;
   /* Abstand und Padding */
   margin: 5px;
   padding: 10px 20px;
