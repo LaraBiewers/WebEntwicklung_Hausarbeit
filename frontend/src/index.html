@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -8,6 +9,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
     <script defer src="bundle.js"></script>
 </head>
+
 <body>
 
     <header></header>
@@ -22,10 +24,55 @@
 
         <div id="Filterfunktion">
             <p>Hier erscheint mal die Filterfunktion (anpassbar mit javascript)</p>
+            <div>
+                <label for="sex">Sex</label>
+                <select name="sex" id="sex">
+                    <option value="">Both</option>
+                    <option value="w">female</option>
+                    <option value="m">male</option>
+                </select>
+            </div>
+            <div>
+                <label for="prefix">Prefix</label>
+                <input type="text" name="prefix" id="prefix">
+              </div>
+              <div>
+                <label for="notPrefix">Not Prefix</label>
+                <input type="text" name="notPrefix" id="notPrefix">
+              </div>
+              <div>
+                <label for="suffix">Suffix</label>
+                <input type="text" name="suffix" id="suffix">
+              </div>
+              <div>
+                <label for="notSuffix">Not Suffix</label>
+                <input type="text" name="notSuffix" id="notSuffix" />
+              </div>
+              <div><label for="syllables">Syllables</label>
+                <input id="syllables" name="syllables" type="number" inputmode="numeric" />
+              </div>
         </div>
 
         <div id="Datenbankdaten">
             <p>Hier kommen die Daten der Datenbank rein (später änderbar zu Merkliste)</p>
+            <ol id="names-table">
+                
+            </ol>
+        </div>
+
+        <div id="page-navigation">
+            <button disabled id="first">
+                <span>first</span>
+            </button>
+            <button disabled id="previous">
+                <span>previous</span>
+            </Button>
+            <button id="next">
+                <span>next</span>
+            </button>
+            <button id="last">
+                <span>last</span>
+            </button>
         </div>
 
     </main>
@@ -33,4 +80,5 @@
     <footer></footer>
 
 </body>
+
 </html>
