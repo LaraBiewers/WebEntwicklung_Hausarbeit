@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   async function loadTable (currentPage) {
     const skipValue = (currentPage - 1) * pageSize;
-    const response = await fetch(`/names/?skip=${skipValue}&limit=${pageSize}`); // TODO 8080 muss Variable sein!
+    const response = await fetch(`/names/?skip=${skipValue}&limit=${pageSize}`);
     const namesData = await response.json();
     console.log(namesData);
 
@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
       dataContainer.appendChild(nameContainer);
       dataContainer.appendChild(sexContainer);
+      dataContainer.appendChild(syllablesContainer);
 
       namesTable.appendChild(dataContainer);
     });
