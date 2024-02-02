@@ -69,9 +69,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
       syllablesContainer.className = 'syllablesContainer';
       syllablesContainer.textContent = element.silben;
 
+      const idContainer = document.createElement('div');
+      syllablesContainer.className = 'idContainer';
+      syllablesContainer.textContent = element._id;
+
       dataContainer.appendChild(nameContainer);
       dataContainer.appendChild(sexContainer);
       dataContainer.appendChild(syllablesContainer);
+      dataContainer.appendChild(idContainer);
 
       namesTable.appendChild(dataContainer);
     });
