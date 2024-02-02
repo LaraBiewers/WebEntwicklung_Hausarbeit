@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     namesData.forEach(element => {
       const dataContainer = document.createElement('li');
       dataContainer.className = 'dataContainer';
+      dataContainer.id = element._id;
 
       const nameContainer = document.createElement('div');
       nameContainer.className = 'nameContainer';
