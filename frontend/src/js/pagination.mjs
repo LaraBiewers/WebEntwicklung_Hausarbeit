@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
       syllablesContainer.textContent = element.silben;
 
       const idContainer = document.createElement('div');
-      syllablesContainer.className = 'idContainer';
-      syllablesContainer.textContent = element._id;
+      idContainer.className = 'idContainer';
+      idContainer.textContent = element._id;
 
       dataContainer.appendChild(nameContainer);
       dataContainer.appendChild(sexContainer);
