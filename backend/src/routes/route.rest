@@ -3,3 +3,7 @@ GET http://localhost:8080/names
 ###
 
 GET http://localhost:8080/names/?skip=9000&limit=10
+
+###
+
+GET http://localhost:8080/names?skip=NaN&limit=10&sex=m&prefix=&notPrefix=&suffix=&notSuffix=&syllables=
