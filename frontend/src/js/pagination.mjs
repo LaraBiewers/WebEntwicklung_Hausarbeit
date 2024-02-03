@@ -2,7 +2,14 @@ const pageSize = 10;
 let currentPage = 1;
 // const totalPages = 0; // Nacher dann datensatz/pageSize
 document.addEventListener('DOMContentLoaded', (event) => {
-  loadTable(currentPage);
+  fetchNames(currentPage);
+
+  document.getElementById('sex').addEventListener('change', fetchNames);
+  document.getElementById('prefix').addEventListener('input', fetchNames);
+  document.getElementById('notPrefix').addEventListener('input', fetchNames);
+  document.getElementById('suffix').addEventListener('input', fetchNames);
+  document.getElementById('notSuffix').addEventListener('input', fetchNames);
+  document.getElementById('syllables').addEventListener('input', fetchNames);
 
   const nextButton = document.getElementById('next');
   const prevButton = document.getElementById('previous');
@@ -14,19 +21,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   function nextPage () {
     currentPage++;
-    loadTable(currentPage);
+    fetchNames(currentPage);
     checkPageForButtonDisable();
   }
 
   function previousPage () {
     currentPage--;
-    loadTable(currentPage);
+    fetchNames(currentPage);
     checkPageForButtonDisable();
   }
 
   function firstPage () {
     currentPage = 1;
-    loadTable(currentPage);
+    fetchNames(currentPage);
     checkPageForButtonDisable();
   }
 
@@ -42,12 +49,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Check for last Page
   }
 
-  async function loadTable (currentPage) {
-    const skipValue = (currentPage - 1) * pageSize;
-    const response = await fetch(`/names/?skip=${skipValue}&limit=${pageSize}`);
-    const namesData = await response.json();
-    console.log(namesData);
+  async function fetchNames (currentPage) {
+    const sex = document.getElementById('sex').value;
+    const prefix = document.getElementById('prefix').value;
+    const notPrefix = document.getElementById('notPrefix').value;
+    const suffix = document.getElementById('suffix').value;
+    const notSuffix = document.getElementById('notSuffix').value;
+    const syllables = document.getElementById('syllables').value;
 
+    // Fetch the filtered data from the server
+    const skipValue = (currentPage - 1) * pageSize;
+    const response = await fetch(`/names?skip=${skipValue}&limit=${pageSize}&sex=${sex}&prefix=${prefix}&notPrefix=${notPrefix}&suffix=${suffix}&notSuffix=${notSuffix}&syllables=${syllables}`);
+    const namesData = await response.json();
+
+    // Update the names table with the filtered data
+    updateNamesTable(namesData);
+  }
+
+  async function updateNamesTable (namesData) {
     const namesTable = document.getElementById('names-table');
 
     // Clear the table
