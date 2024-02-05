@@ -24,7 +24,8 @@
     "minify:js": "terser build/bundle.js --compress --mangle --comments=false -o build/bundle.js",
     "initdb": "node backend/src/js/initDB.mjs",
     "start": "node backend/src/js/server.mjs",
-    "devStart": "nodemon backend/src/js/server.mjs"
+    "devStart": "nodemon backend/src/js/server.mjs",
+    "quick": "npm run clean:build && npm run format && npm run build && npm run start"
   },
   "repository": {
     "type": "git",
