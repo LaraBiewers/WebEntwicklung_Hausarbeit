@@ -1,5 +1,3 @@
-// <button type="button" class="addToMerkliste">Zu Merkliste</button>;
-
 // Event-Listener für die Button-Klasse addToMerkliste
 document.querySelectorAll('.addToMerkliste').forEach((button) => {
   button.addEventListener('click', () => {

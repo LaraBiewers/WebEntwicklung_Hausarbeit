@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   document.getElementById('notSuffix').addEventListener('input', filterChanged);
   document.getElementById('syllables').addEventListener('input', filterChanged);
 
-  function filterChanged(){
+  function filterChanged () {
     currentPage = 1;
     fetchNames(currentPage);
   }
@@ -105,9 +105,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
       syllablesContainer.className = 'syllablesContainer';
       syllablesContainer.textContent = element.silben;
 
+      const buttonContainer = document.createElement('div');
+      buttonContainer.className = 'buttonContainer';
+
+      const button = document.createElement('button');
+      button.setAttribute('type', 'button');
+      button.className = 'addToMerkliste';
+      button.textContent = 'Vorname merken';
+
       dataContainer.appendChild(nameContainer);
       dataContainer.appendChild(sexContainer);
       dataContainer.appendChild(syllablesContainer);
+      dataContainer.appendChild(buttonContainer);
+      buttonContainer.appendChild(button);
 
       namesTable.appendChild(dataContainer);
     });
