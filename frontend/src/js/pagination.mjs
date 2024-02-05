@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
   document.getElementById('notSuffix').addEventListener('input', filterChanged);
   document.getElementById('syllables').addEventListener('input', filterChanged);
 
-  function filterChanged () {
+  function filterChanged(){
     currentPage = 1;
     fetchNames(currentPage);
   }
@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const names = await response.json();
 
     totalPages = Math.ceil(names.count / pageSize);
-    console.log(totalPages);
     // Update the names table with the filtered data
     updateNamesTable(names.namesData);
     checkPageForButtonDisable();
