@@ -82,6 +82,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
     checkPageForButtonDisable();
   }
 
+  // aus buttonToWatchlist
+  async function addToWatchlist (id) {
+    const response = await fetch('/addToWatchlist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ id })
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+  }
+
   async function updateNamesTable (namesData) {
     const namesTable = document.getElementById('names-table');
 
@@ -112,6 +126,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
       button.setAttribute('type', 'button');
       button.className = 'addToMerkliste';
       button.textContent = 'Vorname merken';
+
+      // aus buttonToWatchlist
+      button.addEventListener('click', () => {
+        // zugehörige ID des <li> Elements
+        const id = button.parentElement.parentElement.id;
+        addToWatchlist(id);
+      });
 
       dataContainer.appendChild(nameContainer);
       dataContainer.appendChild(sexContainer);
