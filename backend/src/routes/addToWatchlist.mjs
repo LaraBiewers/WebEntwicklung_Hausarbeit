@@ -1,26 +1,24 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import 'dotenv/config.js';
 
 const router = express.Router();
+
 let db;
 
-const client = new MongoClient(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
-
-client.connect().then(() => {
+MongoClient.connect(process.env.DATABASE_URL).then((client) => {
   db = client.db();
 }).catch((err) => console.error(err));
 
 router.post('/addToWatchlist', async (req, res) => {
   try {
+    const ObjectId = require('mongodb').ObjectId;
     const collection = db.collection('names');
-    const item = await collection.findOne({ _id: req.body.id });
+    const item = await collection.findOne({ _id: new ObjectId(req.body.id) });
     const watchlistCollection = db.collection('watchlist');
 
     // Überprüfen, ob das Element bereits in der Watchlist vorhanden ist
-    const existingItem = await watchlistCollection.findOne({ _id: req.body.id });
+    const existingItem = await watchlistCollection.findOne({ _id: new ObjectId(req.body.id) });
 
     if (!existingItem) {
       // Das Element ist noch nicht in der Watchlist, also füge es hinzu

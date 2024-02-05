@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   // aus buttonToWatchlist
   async function addToWatchlist (id) {
+    // ID wird richtig erkannt!
+    // console.log(id);
     const response = await fetch('/addToWatchlist', {
       method: 'POST',
       headers: {
@@ -92,6 +94,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       body: JSON.stringify({ id })
     });
     if (!response.ok) {
+      console.log(response);
       throw new Error(`HTTP error! status: ${response.status}`);
     }
   }
