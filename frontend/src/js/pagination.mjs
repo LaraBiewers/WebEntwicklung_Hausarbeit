@@ -1,40 +1,48 @@
 const pageSize = 10;
 let currentPage = 1;
-// const totalPages = 0; // Nacher dann datensatz/pageSize
+let totalPages = 0;
 document.addEventListener('DOMContentLoaded', (event) => {
   fetchNames(currentPage);
 
-  document.getElementById('sex').addEventListener('change', fetchNames);
-  document.getElementById('prefix').addEventListener('input', fetchNames);
-  document.getElementById('notPrefix').addEventListener('input', fetchNames);
-  document.getElementById('suffix').addEventListener('input', fetchNames);
-  document.getElementById('notSuffix').addEventListener('input', fetchNames);
-  document.getElementById('syllables').addEventListener('input', fetchNames);
+  document.getElementById('sex').addEventListener('change', filterChanged);
+  document.getElementById('prefix').addEventListener('input', filterChanged);
+  document.getElementById('notPrefix').addEventListener('input', filterChanged);
+  document.getElementById('suffix').addEventListener('input', filterChanged);
+  document.getElementById('notSuffix').addEventListener('input', filterChanged);
+  document.getElementById('syllables').addEventListener('input', filterChanged);
+
+  function filterChanged () {
+    currentPage = 1;
+    fetchNames(currentPage);
+  }
 
   const nextButton = document.getElementById('next');
   const prevButton = document.getElementById('previous');
   const firstButton = document.getElementById('first');
-  // const lastButton = document.getElementById('last');
+  const lastButton = document.getElementById('last');
   nextButton.addEventListener('click', nextPage);
   prevButton.addEventListener('click', previousPage);
   firstButton.addEventListener('click', firstPage);
+  lastButton.addEventListener('click', lastPage);
 
   function nextPage () {
     currentPage++;
     fetchNames(currentPage);
-    checkPageForButtonDisable();
   }
 
   function previousPage () {
     currentPage--;
     fetchNames(currentPage);
-    checkPageForButtonDisable();
   }
 
   function firstPage () {
     currentPage = 1;
     fetchNames(currentPage);
-    checkPageForButtonDisable();
+  }
+
+  function lastPage () {
+    currentPage = totalPages;
+    fetchNames(currentPage);
   }
 
   function checkPageForButtonDisable () {
@@ -46,7 +54,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
       firstButton.disabled = true;
     }
 
-    // Check for last Page
+    if (currentPage >= totalPages) {
+      nextButton.disabled = true;
+      lastButton.disabled = true;
+    } else {
+      nextButton.disabled = false;
+      lastButton.disabled = false;
+    }
   }
 
   async function fetchNames (currentPage) {
@@ -60,10 +74,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Fetch the filtered data from the server
     const skipValue = (currentPage - 1) * pageSize;
     const response = await fetch(`/names?skip=${skipValue}&limit=${pageSize}&sex=${sex}&prefix=${prefix}&notPrefix=${notPrefix}&suffix=${suffix}&notSuffix=${notSuffix}&syllables=${syllables}`);
-    const namesData = await response.json();
+    const names = await response.json();
 
+    totalPages = Math.ceil(names.count / pageSize);
+    console.log(totalPages);
     // Update the names table with the filtered data
-    updateNamesTable(namesData);
+    updateNamesTable(names.namesData);
+    checkPageForButtonDisable();
   }
 
   async function updateNamesTable (namesData) {
@@ -89,14 +106,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
       syllablesContainer.className = 'syllablesContainer';
       syllablesContainer.textContent = element.silben;
 
-      const idContainer = document.createElement('div');
-      idContainer.className = 'idContainer';
-      idContainer.textContent = element._id;
-
       dataContainer.appendChild(nameContainer);
       dataContainer.appendChild(sexContainer);
       dataContainer.appendChild(syllablesContainer);
-      dataContainer.appendChild(idContainer);
 
       namesTable.appendChild(dataContainer);
     });
