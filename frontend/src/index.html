@@ -48,7 +48,7 @@
                 <input type="text" name="notSuffix" id="notSuffix" />
               </div>
               <div><label for="syllables">Syllables</label>
-                <input id="syllables" name="syllables" type="number" inputmode="numeric" />
+                <input id="syllables" name="syllables" type="number" inputmode="numeric" min="0" oninput="validity.valid||(value='');"/>
               </div>
         </div>
 
