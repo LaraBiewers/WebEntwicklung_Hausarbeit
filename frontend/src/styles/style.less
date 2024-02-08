@@ -11,6 +11,10 @@
 @text-color: black;
 @button-color: #4C7326;
 
+@input-border-radius:  4px;
+@input-padding:  8px;
+@input-margin:  10px  0;
+
 body {
   font-family: @font-family;
   font-size: @font-size;
@@ -53,4 +57,43 @@ button {
   /* Abstand und Padding */
   margin: 5px;
   padding: 10px 20px;
+}
+
+#Filterfunktion {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: baseline;
+
+  div{
+    margin-right: 20px;
+  }
+
+  p {
+    display:block;
+    width: @contentWidth;
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: block;
+    margin-bottom:  5px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    display: block;
+    width:  100%;
+    max-width:  300px; // Limit the input field width
+    box-sizing: border-box;
+    border:  1px solid #ccc;
+    border-radius: @input-border-radius;
+    padding: @input-padding;
+    margin: @input-margin;
+    &:focus {
+      outline: none;
+      border-color: @button-color;
+    }
+  }
 }
