@@ -143,8 +143,9 @@ export function getCurrentPage () {
 export function setCurrentPage (newValue) {
   if (newValue > 0 && newValue <= totalPages) {
     currentPage = newValue;
-    fetchNames(currentPage);
   } else {
-    throw new RangeError('Page out of range');
+    console.log('Page out of range, set to first page');
+    currentPage = 1;
   }
+  fetchNames(currentPage);
 }
