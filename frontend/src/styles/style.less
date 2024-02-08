@@ -15,6 +15,12 @@
 @input-padding:  8px;
 @input-margin:  10px  0;
 
+@table-bg-color: #f9f9f9;
+@table-header-bg-color: #333;
+@table-header-text-color: #fff;
+@table-row-hover-bg-color: #ddd;
+@table-text-color: #333;
+
 body {
   font-family: @font-family;
   font-size: @font-size;
@@ -96,4 +102,59 @@ button {
       border-color: @button-color;
     }
   }
+
+  input[type="text"],
+  select {
+    display: block;
+    width: 300px;
+    box-sizing: border-box;
+    border:  1px solid #ccc;
+    border-radius:  4px;
+    padding:  8px;
+    margin:  10px  0;
+    
+    &:focus {
+      outline: none;
+      border-color: @button-color;
+    }
+}}
+
+#names-table {
+  list-style: none;
+  padding:  0;
+  margin:  0;
+  width:  100%;
+
+  .dataContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:  10px;
+    border-bottom:  1px solid #ddd;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:nth-child(even) {
+      background-color: @table-bg-color;
+    }
+
+    &:hover {
+      background-color: @table-row-hover-bg-color;
+    }
+
+    .nameContainer,
+    .sexContainer,
+    .syllablesContainer {
+      flex:  1;
+      margin-right:  10px;
+      color: @table-text-color;
+    }
+
+    .buttonContainer {
+      flex:  0;
+    }
+  }
 }
+
