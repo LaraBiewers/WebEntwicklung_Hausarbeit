@@ -71,7 +71,7 @@ async function fetchNames (currentPage) {
   checkPageForButtonDisable();
 }
 
-// Übertrage ID von names nach watchlist
+// Buttonfunktion: Kopiere Element über _ID von names nach watchlist
 async function addToWatchlist (id) {
   const response = await fetch('/addToWatchlist', {
     method: 'POST',
