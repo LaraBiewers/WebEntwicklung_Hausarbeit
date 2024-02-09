@@ -1,6 +1,5 @@
 import express from 'express';
 import { MongoClient, ObjectId } from 'mongodb';
-
 import 'dotenv/config.js';
 
 const router = express.Router();
@@ -34,7 +33,6 @@ router.post('/', async (req, res) => {
 
     // Verwenden ID, um entsprechendes Element in names-Collection zu finden
     const item = await namesCollection.findOne({ _id: new ObjectId(idString) });
-    console.log(item);
 
     // Überprüfen, ob Element bereits in der watchlist-Collection vorhanden ist
     const existingItem = await watchlistCollection.findOne({ _id: new ObjectId(idString) });
@@ -52,28 +50,5 @@ router.post('/', async (req, res) => {
     res.status(500).json({ error });
   }
 });
-
-// router.post('/', async (req, res) => {
-//   try {
-//     const ObjectId = require('mongodb').ObjectId;
-//     const namesCollection = db.collection('names');
-//     const watchlistCollection = db.collection('watchlist');
-//     const item = await namesCollection.findOne({ _id: new ObjectId(req.body.id) });
-
-//     // Überprüfen, ob das Element bereits in der Watchlist vorhanden ist
-//     const existingItem = await watchlistCollection.findOne({ _id: new ObjectId(req.body.id) });
-
-//     if (!existingItem) {
-//       // Das Element ist noch nicht in der Watchlist, also füge es hinzu
-//       await watchlistCollection.insertOne(item);
-//       res.status(200).send('Item added to Watchlist');
-//     } else {
-//       // Das Element ist bereits in der Watchlist
-//       res.status(409).send('Item already in Watchlist');
-//     }
-//   } catch (error) {
-//     res.status(500).send(error);
-//   }
-// });
 
 export default router;
