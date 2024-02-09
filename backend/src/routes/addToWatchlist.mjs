@@ -1,5 +1,6 @@
 import express from 'express';
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
+
 import 'dotenv/config.js';
 
 const router = express.Router();
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
 
     // Verwenden ID, um entsprechendes Element in Datenbank zu finden
     const namesCollection = db.collection('names');
-    const item = await namesCollection.find({ _id: idString });
+    const item = await namesCollection.findOne({ _id: new ObjectId(idString) });
 
     // Sende Antwort zurück an Frontend
     res.json({ item });
