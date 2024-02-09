@@ -5,11 +5,12 @@ document.getElementById('Filter').addEventListener('click', toggleFilter);
 document.getElementById('Merkliste').addEventListener('click', changeToFavorites);
 document.getElementById('Namensliste').addEventListener('click', changeToDefault);
 
+// Bei Start der Anwendung
 window.addEventListener('load', (event) => {
   // Informationen für die vollständige Namensliste
   document.getElementById('Seiteninformation').innerHTML = hauptseiteInfo;
 
-  // Filter ausblenden
+  // Filter onStart ausblenden
   document.getElementById('Filterfunktion').style.display = 'none';
 
   // Button für vollständige Namensliste ausblenden
@@ -19,6 +20,7 @@ window.addEventListener('load', (event) => {
   document.getElementById('favorite-table').style.display = 'none';
 });
 
+// Filterfunktion ein- oder ausblenden
 function toggleFilter () {
   if (document.getElementById('Filterfunktion').style.display === 'none') {
     document.getElementById('Filterfunktion').style.display = '';
@@ -27,7 +29,9 @@ function toggleFilter () {
   }
 }
 
+// Bei Wechsel zu Merkliste
 function changeToFavorites () {
+  // Informationen für die Merkliste
   document.getElementById('Seiteninformation').innerHTML = merklisteInfo;
 
   // Filter onStart ausblenden
@@ -48,7 +52,9 @@ function changeToFavorites () {
   document.getElementById('favorite-table').style.display = '';
 }
 
+// Bei Wechsel zu vollständige Namensliste
 function changeToDefault () {
+  // Informationen für die vollständige Namensliste
   document.getElementById('Seiteninformation').innerHTML = hauptseiteInfo;
 
   // Filter onStart ausblenden
