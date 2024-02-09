@@ -89,7 +89,6 @@ async function addToWatchlist (id) {
 
 // Build up table structure
 async function updateNamesTable (namesData) {
-
   const namesTable = document.getElementById('names-table');
 
   // Clear the table

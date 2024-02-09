@@ -6,6 +6,10 @@ POST http://localhost:8080/addToWatchlist?id=65bcef92141e0276818a3ea7
 
 ###
 
+GET http://localhost:8080/getFromWatchlist?skip=NaN&limit=10&sex=m
+
+###
+
 GET http://localhost:8080/names/?skip=9000&limit=10
 
 ###

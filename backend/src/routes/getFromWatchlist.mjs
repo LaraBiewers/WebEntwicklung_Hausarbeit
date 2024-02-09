@@ -17,9 +17,12 @@ router.get('/', async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const sex = req.query.sex;
 
+    const query = {};
+    if (sex) query.geschlecht = sex;
+
     const watchlistCollection = db.collection('watchlist');
-    const watchlistData = await watchlistCollection.find(sex).skip(skip).limit(limit).toArray();
-    const count = await watchlistCollection.countDocuments(sex);
+    const watchlistData = await watchlistCollection.find(query).skip(skip).limit(limit).toArray();
+    const count = await watchlistCollection.countDocuments(query);
     res.json({ watchlistData, count });
   } catch (error) {
     res.status(500).json({ message: error.message });
