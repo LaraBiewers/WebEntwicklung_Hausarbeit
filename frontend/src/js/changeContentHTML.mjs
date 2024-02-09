@@ -16,8 +16,8 @@ window.addEventListener('load', (event) => {
   // Button für vollständige Namensliste ausblenden
   document.getElementById('Namensliste').style.display = 'none';
 
-  // MongoDB-Collection favorite-table ausblenden
-  document.getElementById('favorite-table').style.display = 'none';
+  // MongoDB-Collection watchlist-table ausblenden
+  document.getElementById('watchlist-table').style.display = 'none';
 });
 
 // Filterfunktion ein- oder ausblenden
@@ -47,9 +47,9 @@ function changeToFavorites () {
   document.getElementById('Merkliste').style.display = 'none';
   document.getElementById('Namensliste').style.display = '';
 
-  // MongoDB-Collections: names-table ausblenden + favorite-table einblenden
+  // MongoDB-Collections: names-table ausblenden + watchlist-table einblenden
   document.getElementById('names-table').style.display = 'none';
-  document.getElementById('favorite-table').style.display = '';
+  document.getElementById('watchlist-table').style.display = '';
 }
 
 // Bei Wechsel zu vollständige Namensliste
@@ -70,7 +70,7 @@ function changeToDefault () {
   document.getElementById('Merkliste').style.display = '';
   document.getElementById('Namensliste').style.display = 'none';
 
-  // MongoDB-Collections: names-table einblenden + favorite-table ausblenden
+  // MongoDB-Collections: names-table einblenden + watchlist-table ausblenden
   document.getElementById('names-table').style.display = '';
-  document.getElementById('favorite-table').style.display = 'none';
+  document.getElementById('watchlist-table').style.display = 'none';
 }

@@ -3,7 +3,6 @@ import { MongoClient, ObjectId } from 'mongodb';
 import 'dotenv/config.js';
 
 const router = express.Router();
-
 let db;
 
 // Verbinde zur richtigen Datenbank
@@ -25,7 +24,7 @@ router.post('/', async (req, res) => {
 
   // Element von names-Collection in watchlist-Collection kopieren
   try {
-    // Extrahiere ID aus den Query-Parametern
+    // Extrahiere ID aus URL-Parametern
     const idString = req.body.id;
 
     const namesCollection = db.collection('names');
