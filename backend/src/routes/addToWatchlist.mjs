@@ -12,19 +12,44 @@ MongoClient.connect(process.env.DATABASE_URL).then((client) => {
   db = client.db();
 }).catch((err) => console.error(err));
 
-router.get('/', async (req, res) => {
+router.post('/', async (req, res) => {
+  // watchlist-Collection erstellen, falls noch nicht vorhanden
+  const collections = await db.listCollections().toArray();
+  const watchlistCollectionExists = collections.some(col => col.name === 'watchlist');
+  try {
+    if (!watchlistCollectionExists) {
+      db.createCollection('watchlist');
+    }
+  } catch (error) {
+    console.log(error);
+  }
+
+  // Element von names-Collection in watchlist-Collection kopieren
   try {
     // Extrahiere ID aus den Query-Parametern
-    const idString = req.query.id;
+    const idString = req.body.id;
 
-    // Verwenden ID, um entsprechendes Element in Datenbank zu finden
     const namesCollection = db.collection('names');
+    const watchlistCollection = db.collection('watchlist');
+
+    // Verwenden ID, um entsprechendes Element in names-Collection zu finden
     const item = await namesCollection.findOne({ _id: new ObjectId(idString) });
+    console.log(item);
+
+    // Überprüfen, ob Element bereits in der watchlist-Collection vorhanden ist
+    const existingItem = await watchlistCollection.findOne({ _id: new ObjectId(idString) });
 
     // Sende Antwort zurück an Frontend
-    res.json({ item });
+    if (!existingItem) {
+      // Element noch nicht in der watchlist, also füge hinzu
+      await watchlistCollection.insertOne(item);
+      res.status(200).json({ message: 'Item added to Watchlist' });
+    } else {
+      // Element ist in der watchlist
+      res.status(409).json({ message: 'Item already in Watchlist' });
+    }
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ error });
   }
 });
 

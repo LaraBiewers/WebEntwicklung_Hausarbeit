@@ -72,11 +72,23 @@ async function fetchNames (currentPage) {
 }
 
 // Übertrage ID von names nach watchlist
+// async function addToWatchlist (id) {
+//   const response = await fetch(`/addToWatchlist?id=${id}`);
+
+//   const data = await response.json();
+//   console.log(data);
+// }
 async function addToWatchlist (id) {
-  const response = await fetch(`/addToWatchlist?id=${id}`);
+  const response = await fetch('/addToWatchlist', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id })
+  });
 
   const data = await response.json();
-  console.log(data.item);
+  console.log(data);
 }
 
 async function updateNamesTable (namesData) {
