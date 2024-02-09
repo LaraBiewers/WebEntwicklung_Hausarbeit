@@ -2,7 +2,7 @@ GET http://localhost:8080/names
 
 ###
 
-GET http://localhost:8080/addToWatchlist
+GET http://localhost:8080/addToWatchlist?id=65bcef92141e0276818a3ea7
 
 ###
 

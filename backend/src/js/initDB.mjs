@@ -27,14 +27,25 @@ const namesCsv = 'backend/src/assets/Gesamt_Vornamen_Koeln_2010_2022_cleaned.csv
 
 async function fillData (client, csvPath) {
   const db = client.db('nameDB');
+  // Clean Database
   try {
     const collections = await db.listCollections().toArray();
+    // Clean names Collection
     const namesCollectionExists = collections.some(col => col.name === 'names');
     if (namesCollectionExists) {
       if (await db.collection('names').drop()) {
-        console.log('database cleaned');
+        console.log('Collection names cleaned');
       } else {
-        throw error('Something went wrong with the cleaning of the database');
+        throw error('Something went wrong with the cleaning of the names-Collection');
+      }
+    }
+    // Clean watchlist Collection
+    const watchlistCollectionExists = collections.some(col => col.name === 'watchlist');
+    if (watchlistCollectionExists) {
+      if (await db.collection('watchlist').drop()) {
+        console.log('Collection watchlist cleaned');
+      } else {
+        throw error('Something went wrong with the cleaning of the watchlist-Collection');
       }
     }
   } catch (error) {
