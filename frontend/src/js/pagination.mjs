@@ -52,7 +52,9 @@ function checkPageForButtonDisable () {
   }
 }
 
+// Fill <ol>-Elements
 async function fetchNames (currentPage) {
+  // If "complete name list" active, use all filters, otherwise only gender
   const sex = document.getElementById('sex').value;
   const prefix = document.getElementById('prefix').value;
   const notPrefix = document.getElementById('notPrefix').value;
@@ -60,13 +62,13 @@ async function fetchNames (currentPage) {
   const notSuffix = document.getElementById('notSuffix').value;
   const syllables = document.getElementById('syllables').value;
 
-  // Fetch the filtered data from the server
+  // Fetch the filtered data from names-Collection
   const skipValue = (currentPage - 1) * pageSize;
   const response = await fetch(`/names?skip=${skipValue}&limit=${pageSize}&sex=${sex}&prefix=${prefix}&notPrefix=${notPrefix}&suffix=${suffix}&notSuffix=${notSuffix}&syllables=${syllables}`);
   const names = await response.json();
 
   totalPages = Math.ceil(names.count / pageSize);
-  // Update the names table with the filtered data
+  // Update names table with filtered data
   updateNamesTable(names.namesData);
   checkPageForButtonDisable();
 }
@@ -85,7 +87,9 @@ async function addToWatchlist (id) {
   console.log(data);
 }
 
+// Build up table structure
 async function updateNamesTable (namesData) {
+
   const namesTable = document.getElementById('names-table');
 
   // Clear the table
@@ -108,15 +112,17 @@ async function updateNamesTable (namesData) {
     syllablesContainer.className = 'syllablesContainer';
     syllablesContainer.textContent = element.silben;
 
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'buttonContainer';
+    // button to copy elements to watchlist
+    const copyButtonContainer = document.createElement('div');
+    copyButtonContainer.className = 'buttonContainer';
 
-    const button = document.createElement('button');
-    button.setAttribute('type', 'button');
-    button.className = 'addToWatchlist';
-    button.textContent = 'Vorname merken';
+    const copyButton = document.createElement('button');
+    copyButton.setAttribute('type', 'button');
+    copyButton.className = 'addToWatchlist';
+    copyButton.textContent = 'Vorname merken';
 
-    button.addEventListener('click', () => {
+    // EventListener for addToWatchlist
+    copyButton.addEventListener('click', () => {
       // zugehörige ID des <li> Elements
       const id = dataContainer.id;
       addToWatchlist(id);
@@ -125,8 +131,8 @@ async function updateNamesTable (namesData) {
     dataContainer.appendChild(nameContainer);
     dataContainer.appendChild(sexContainer);
     dataContainer.appendChild(syllablesContainer);
-    dataContainer.appendChild(buttonContainer);
-    buttonContainer.appendChild(button);
+    dataContainer.appendChild(copyButtonContainer);
+    copyButtonContainer.appendChild(copyButton);
 
     namesTable.appendChild(dataContainer);
   });
