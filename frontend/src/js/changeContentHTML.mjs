@@ -30,8 +30,14 @@ function toggleFilter () {
 function changeToFavorites () {
   document.getElementById('Seiteninformation').innerHTML = merklisteInfo;
 
-  // Filter ausblenden
+  // Filter onStart ausblenden
   document.getElementById('Filterfunktion').style.display = 'none';
+  // Alle Filter ausblenden, außer Geschlecht
+  document.getElementById('prefixDiv').style.display = 'none';
+  document.getElementById('notPrefixDiv').style.display = 'none';
+  document.getElementById('suffixDiv').style.display = 'none';
+  document.getElementById('notSuffixDiv').style.display = 'none';
+  document.getElementById('syllablesDiv').style.display = 'none';
 
   // Buttons: Merkliste ausblenden + Namensliste einblenden
   document.getElementById('Merkliste').style.display = 'none';
@@ -45,8 +51,14 @@ function changeToFavorites () {
 function changeToDefault () {
   document.getElementById('Seiteninformation').innerHTML = hauptseiteInfo;
 
-  // Filter ausblenden
+  // Filter onStart ausblenden
   document.getElementById('Filterfunktion').style.display = 'none';
+  // Alle Filter einblenden
+  document.getElementById('prefixDiv').style.display = '';
+  document.getElementById('notPrefixDiv').style.display = '';
+  document.getElementById('suffixDiv').style.display = '';
+  document.getElementById('notSuffixDiv').style.display = '';
+  document.getElementById('syllablesDiv').style.display = '';
 
   // Buttons: Merkliste einblenden + Namensliste ausblenden
   document.getElementById('Merkliste').style.display = '';

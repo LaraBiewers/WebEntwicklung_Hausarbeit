@@ -23,7 +23,7 @@
 
         <div id="Filterfunktion">
             <p>Filterwahl</p>
-            <div>
+            <div id="sexDiv">
                 <label for="sex">Sex</label>
                 <select name="sex" id="sex">
                     <option value="">Both</option>
@@ -31,25 +31,26 @@
                     <option value="m">male</option>
                 </select>
             </div>
-            <div>
+            <div id="prefixDiv">
                 <label for="prefix">Prefix</label>
                 <input type="text" name="prefix" id="prefix">
-              </div>
-              <div>
+            </div>
+            <div id="notPrefixDiv">
                 <label for="notPrefix">Not Prefix</label>
                 <input type="text" name="notPrefix" id="notPrefix">
-              </div>
-              <div>
+            </div>
+            <div id="suffixDiv">
                 <label for="suffix">Suffix</label>
                 <input type="text" name="suffix" id="suffix">
-              </div>
-              <div>
+            </div>
+            <div id="notSuffixDiv">
                 <label for="notSuffix">Not Suffix</label>
                 <input type="text" name="notSuffix" id="notSuffix" />
-              </div>
-              <div><label for="syllables">Syllables</label>
+            </div>
+            <div id="syllablesDiv">
+                <label for="syllables">Syllables</label>
                 <input id="syllables" name="syllables" type="number" inputmode="numeric" min="0" oninput="validity.valid||(value='');"/>
-              </div>
+            </div>
         </div>
 
         <div id="Datenbankdaten">
