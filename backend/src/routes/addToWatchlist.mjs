@@ -10,7 +10,7 @@ MongoClient.connect(process.env.DATABASE_URL).then((client) => {
   db = client.db();
 }).catch((err) => console.error(err));
 
-router.post('/addToWatchlist', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const ObjectId = require('mongodb').ObjectId;
     const collection = db.collection('names');
@@ -33,4 +33,4 @@ router.post('/addToWatchlist', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

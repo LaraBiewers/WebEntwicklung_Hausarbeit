@@ -71,7 +71,7 @@ async function fetchNames (currentPage) {
   checkPageForButtonDisable();
 }
 
-// aus buttonToWatchlist
+// Übertrage ID von names nach watchlist
 async function addToWatchlist (id) {
   // ID wird richtig erkannt!
   // console.log(id);
@@ -116,13 +116,12 @@ async function updateNamesTable (namesData) {
 
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
-    button.className = 'addToMerkliste';
+    button.className = 'addToWatchlist';
     button.textContent = 'Vorname merken';
 
-    // aus buttonToWatchlist
     button.addEventListener('click', () => {
       // zugehörige ID des <li> Elements
-      const id = button.parentElement.parentElement.id;
+      const id = dataContainer.id;
       addToWatchlist(id);
     });
 
