@@ -178,10 +178,11 @@ async function updateNamesTable (namesData) {
 async function fetchNamesFromWatchlist (currentPage) {
   // Use all filters
   const sex = document.getElementById('sex').value;
+  const prio = document.getElementById('prio').value;
 
   // Fetch the filtered data from watchlist-Collection
   const skipValue = (currentPage - 1) * pageSize;
-  const response = await fetch(`/getFromWatchlist?skip=${skipValue}&limit=${pageSize}&sex=${sex}`);
+  const response = await fetch(`/getFromWatchlist?skip=${skipValue}&limit=${pageSize}&sex=${sex}&prio=${prio}`);
   const names = await response.json();
 
   totalPages = Math.ceil(names.count / pageSize);
@@ -230,21 +231,6 @@ async function updateWatchlistTable (watchlistData) {
     dataContainer.className = 'dataContainer';
     dataContainer.id = element._id;
 
-    // Exklusiv für watchlist
-    const prioContainer = document.createElement('div');
-    prioContainer.className = 'prioContainer';
-
-    // Button zum anwählen der Priorisierung
-    const prioButton = document.createElement('button');
-    prioButton.setAttribute('type', 'button');
-    prioButton.className = 'prioButton';
-    prioButton.textContent = 'Priorisieren';
-
-    // Anzeige des Prio-Status
-    const prioPara = document.createElement('p');
-    prioPara.className = 'prioPara';
-    prioPara.innerText = element.prio;
-
     const nameContainer = document.createElement('div');
     nameContainer.className = 'nameContainer';
     nameContainer.textContent = element.name;
@@ -256,6 +242,22 @@ async function updateWatchlistTable (watchlistData) {
     const syllablesContainer = document.createElement('div');
     syllablesContainer.className = 'syllablesContainer';
     syllablesContainer.textContent = element.silben;
+
+    // Exklusiv für watchlist
+
+    // Anzeige des Prio-Status
+    const prioParaContainer = document.createElement('div');
+    prioParaContainer.className = 'prioParaContainer';
+    prioParaContainer.innerText = element.prio;
+
+    // Button zum anwählen der Priorisierung
+    const prioButtonContainer = document.createElement('div');
+    prioButtonContainer.className = 'prioButtonContainer';
+
+    const prioButton = document.createElement('button');
+    prioButton.setAttribute('type', 'button');
+    prioButton.className = 'prioButton';
+    prioButton.textContent = 'Priorisieren';
 
     // button to delete elements from watchlist
     const deleteButtonContainer = document.createElement('div');
@@ -286,12 +288,14 @@ async function updateWatchlistTable (watchlistData) {
 
     watchlistTable.appendChild(dataContainer);
 
-    dataContainer.appendChild(prioContainer);
-    prioContainer.appendChild(prioButton);
-    prioContainer.appendChild(prioPara);
     dataContainer.appendChild(nameContainer);
     dataContainer.appendChild(sexContainer);
     dataContainer.appendChild(syllablesContainer);
+    dataContainer.appendChild(prioParaContainer);
+
+    dataContainer.appendChild(prioButtonContainer);
+    prioButtonContainer.appendChild(prioButton);
+
     dataContainer.appendChild(deleteButtonContainer);
     deleteButtonContainer.appendChild(deleteButton);
   });

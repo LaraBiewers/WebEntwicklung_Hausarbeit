@@ -16,9 +16,11 @@ router.get('/', async (req, res) => {
     const skip = parseInt(req.query.skip) || 0;
     const limit = parseInt(req.query.limit) || 10;
     const sex = req.query.sex;
+    const prio = req.query.prio;
 
     const query = {};
     if (sex) query.geschlecht = sex;
+    if (prio) query.prio = prio;
 
     const watchlistCollection = db.collection('watchlist');
     const watchlistData = await watchlistCollection.find(query).skip(skip).limit(limit).toArray();

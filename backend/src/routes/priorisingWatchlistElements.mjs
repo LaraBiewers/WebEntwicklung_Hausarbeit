@@ -26,10 +26,10 @@ router.patch('/', async (req, res) => {
       return res.status(404).json({ message: 'Item not found' });
     }
 
-    // toggle boolwert von prio des gefundenen Elements
+    // toggle value von prio des gefundenen Elements
     const updateResult = await watchlistCollection.updateOne(
       { _id: new ObjectId(idString) },
-      { $set: { prio: !item.prio } }
+      { $set: { prio: item.prio === 'true' ? 'false' : 'true' } }
     );
 
     // Überprüfe, ob das Element erfolgreich aktualisiert wurde
