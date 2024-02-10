@@ -40,6 +40,8 @@ router.post('/', async (req, res) => {
     if (!existingItem) {
       // Element noch nicht in der watchlist, also füge hinzu
       await watchlistCollection.insertOne(item);
+      // Verwendung für die Priorisierung von Namen
+      await watchlistCollection.updateOne({ _id: new ObjectId(idString) }, { $set: { prio: false } });
       res.status(200).json({ message: 'Item added to Watchlist' });
     } else {
       // Element ist in der watchlist

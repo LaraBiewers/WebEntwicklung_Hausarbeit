@@ -3,6 +3,7 @@ import namesRouter from '../routes/names.mjs';
 import copyRouter from '../routes/addToWatchlist.mjs';
 import watchlistRouter from '../routes/getFromWatchlist.mjs';
 import deleteRouter from '../routes/deleteFromWatchlist.mjs';
+import prioRouter from '../routes/priorisingWatchlistElements.mjs';
 
 const app = express();
 const port = process.argv[2] || 8080;
@@ -14,6 +15,7 @@ app.use('/names', namesRouter);
 app.use('/addToWatchlist', copyRouter);
 app.use('/getFromWatchlist', watchlistRouter);
 app.use('/deleteFromWatchlist', deleteRouter);
+app.use('/priorisingWatchlistElements', prioRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

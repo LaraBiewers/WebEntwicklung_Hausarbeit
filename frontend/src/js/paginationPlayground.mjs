@@ -160,13 +160,13 @@ async function updateNamesTable (namesData) {
       addToWatchlist(id);
     });
 
+    namesTable.appendChild(dataContainer);
+
     dataContainer.appendChild(nameContainer);
     dataContainer.appendChild(sexContainer);
     dataContainer.appendChild(syllablesContainer);
     dataContainer.appendChild(copyButtonContainer);
     copyButtonContainer.appendChild(copyButton);
-
-    namesTable.appendChild(dataContainer);
   });
 }
 
@@ -179,7 +179,7 @@ async function fetchNamesFromWatchlist (currentPage) {
   // Use all filters
   const sex = document.getElementById('sex').value;
 
-  // Fetch the filtered data from names-Collection
+  // Fetch the filtered data from watchlist-Collection
   const skipValue = (currentPage - 1) * pageSize;
   const response = await fetch(`/getFromWatchlist?skip=${skipValue}&limit=${pageSize}&sex=${sex}`);
   const names = await response.json();
@@ -188,6 +188,20 @@ async function fetchNamesFromWatchlist (currentPage) {
   // Update names table with filtered data
   updateWatchlistTable(names.watchlistData);
   checkPageForButtonDisable();
+}
+
+// Buttonfunktion: Priorisiere Element über _ID von watchlist
+async function prioriseElement (id) {
+  const response = await fetch('/priorisingWatchlistElements', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id })
+  });
+
+  const data = await response.json();
+  console.log(data);
 }
 
 // Buttonfunktion: Lösche Element über _ID von watchlist
@@ -216,6 +230,21 @@ async function updateWatchlistTable (watchlistData) {
     dataContainer.className = 'dataContainer';
     dataContainer.id = element._id;
 
+    // Exklusiv für watchlist
+    const prioContainer = document.createElement('div');
+    prioContainer.className = 'prioContainer';
+
+    // Button zum anwählen der Priorisierung
+    const prioButton = document.createElement('button');
+    prioButton.setAttribute('type', 'button');
+    prioButton.className = 'prioButton';
+    prioButton.textContent = 'Priorisieren';
+
+    // Anzeige des Prio-Status
+    const prioPara = document.createElement('p');
+    prioPara.className = 'prioPara';
+    prioPara.innerText = element.prio;
+
     const nameContainer = document.createElement('div');
     nameContainer.className = 'nameContainer';
     nameContainer.textContent = element.name;
@@ -237,7 +266,16 @@ async function updateWatchlistTable (watchlistData) {
     deleteButton.className = 'deleteFromWatchlist';
     deleteButton.textContent = 'Vorname entfernen';
 
-    // EventListener for addToWatchlist
+    // EventListener für Priorisierung
+    prioButton.addEventListener('click', () => {
+      // zugehörige ID des <li> Elements
+      const id = dataContainer.id;
+      prioriseElement(id);
+      // Nach dem Löschen aktualisiere die watchlist-Tabelle
+      fetchNamesFromWatchlist(currentPage);
+    });
+
+    // EventListener für addToWatchlist
     deleteButton.addEventListener('click', () => {
       // zugehörige ID des <li> Elements
       const id = dataContainer.id;
@@ -248,6 +286,9 @@ async function updateWatchlistTable (watchlistData) {
 
     watchlistTable.appendChild(dataContainer);
 
+    dataContainer.appendChild(prioContainer);
+    prioContainer.appendChild(prioButton);
+    prioContainer.appendChild(prioPara);
     dataContainer.appendChild(nameContainer);
     dataContainer.appendChild(sexContainer);
     dataContainer.appendChild(syllablesContainer);
