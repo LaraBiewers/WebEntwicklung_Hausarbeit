@@ -1,3 +1,6 @@
+// @NIKLAS
+// Zum Ausprobieren ---> Gesamten Code dieses Dokumentes Kopieren und pagination überschreiben. Musst es ja nicht pushen.
+
 const pageSize = 10;
 let currentPage = 1;
 let totalPages = 0;
@@ -239,6 +242,8 @@ async function updateWatchlistTable (watchlistData) {
       // zugehörige ID des <li> Elements
       const id = dataContainer.id;
       deleteFromWatchlist(id);
+      // Nach dem Löschen aktualisiere die watchlist-Tabelle
+      fetchNamesFromWatchlist(currentPage);
     });
 
     watchlistTable.appendChild(dataContainer);
@@ -262,5 +267,10 @@ export function setCurrentPage (newValue) {
     console.log('Page out of range, set to first page');
     currentPage = 1;
   }
-  fetchNamesFromNames(currentPage);
+  // Call the appropriate fetch function based on whether the watchlist is active
+  if (isWatchlistActive) {
+    fetchNamesFromWatchlist(currentPage);
+  } else {
+    fetchNamesFromNames(currentPage);
+  }
 }
