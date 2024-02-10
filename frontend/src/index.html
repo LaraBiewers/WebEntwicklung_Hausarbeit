@@ -58,6 +58,14 @@
                 <label for="syllables">Syllables</label>
                 <input id="syllables" name="syllables" type="number" inputmode="numeric" min="0" oninput="validity.valid||(value='');"/>
             </div>
+            <div id="prioDiv">
+                <label for="prio">Display of prioritised names</label>
+                <select name="prio" id="prio">
+                    <option value="">Both</option>
+                    <option value="t">Only prioritised</option>
+                    <option value="f">Only non-prioritised</option>
+                </select>
+            </div>
         </div>
 
         <div id="Datenbankdaten">

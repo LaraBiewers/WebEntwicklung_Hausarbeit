@@ -12,6 +12,8 @@ window.addEventListener('load', (event) => {
 
   // Filter onStart ausblenden
   document.getElementById('Filterfunktion').style.display = 'none';
+  // Prio-Filter ausblenden
+  document.getElementById('prioDiv').style.display = 'none';
 
   // Button für vollständige Namensliste ausblenden
   document.getElementById('Namensliste').style.display = 'none';
@@ -42,6 +44,8 @@ function changeToFavorites () {
   document.getElementById('suffixDiv').style.display = 'none';
   document.getElementById('notSuffixDiv').style.display = 'none';
   document.getElementById('syllablesDiv').style.display = 'none';
+  // Prio-Filter einblenden
+  document.getElementById('prioDiv').style.display = '';
 
   // Buttons: Merkliste ausblenden + Namensliste einblenden
   document.getElementById('Merkliste').style.display = 'none';
@@ -65,6 +69,8 @@ function changeToDefault () {
   document.getElementById('suffixDiv').style.display = '';
   document.getElementById('notSuffixDiv').style.display = '';
   document.getElementById('syllablesDiv').style.display = '';
+  // Prio-Filter ausblenden
+  document.getElementById('prioDiv').style.display = 'none';
 
   // Buttons: Merkliste einblenden + Namensliste ausblenden
   document.getElementById('Merkliste').style.display = '';
