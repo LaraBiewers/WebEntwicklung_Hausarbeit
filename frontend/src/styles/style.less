@@ -11,9 +11,9 @@
 @text-color: black;
 @button-color: #4C7326;
 
-@input-border-radius:  4px;
-@input-padding:  8px;
-@input-margin:  10px  0;
+@input-border-radius: 4px;
+@input-padding: 8px;
+@input-margin: 10px;
 
 @table-bg-color: #f9f9f9;
 @table-header-bg-color: #333;
@@ -29,17 +29,17 @@ body {
 header {
   background-color: @headAndFootColor;
   height: @headHeight;
-  width: @headAndFootWidth;
-  top: 0;
   left: 0;
+  top: 0;
+  width: @headAndFootWidth;
 }
 
 #flex-header {
-  height: @headHeight;
-  width: @headAndFootWidth;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: @headHeight;
+  justify-content: center;
+  width: @headAndFootWidth;
 }
 
 main {
@@ -54,85 +54,88 @@ footer {
 }
 
 button {
-  font-size: @font-size;
-  font-family: @font-family;
   background-color: @button-color;
   border-radius: 5px;
   color: @text-color;
+  font-family: @font-family;
+  font-size: @font-size;
   /* Abstand und Padding */
   margin: 5px;
   padding: 10px 20px;
 }
 
 #Filterfunktion {
+  align-items: baseline;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: baseline;
 
-  div{
+  div {
     margin-right: 20px;
   }
 
   p {
-    display:block;
-    width: @contentWidth;
+    display: block;
     margin-bottom: 10px;
+    width: @contentWidth;
   }
 
   label {
     display: block;
-    margin-bottom:  5px;
     font-weight: bold;
+    margin-bottom: 5px;
   }
 
-  input[type="text"],
-  input[type="number"] {
-    display: block;
-    width:  100%;
-    max-width:  300px; // Limit the input field width
-    box-sizing: border-box;
-    border:  1px solid #ccc;
+  input[type='text'] ,
+  input[type='number'] {
+    border: 1px solid #cccccc;
     border-radius: @input-border-radius;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: @input-margin;
+    margin-top: @input-margin;
+    max-width: 300px; // Limit the input field width
     padding: @input-padding;
-    margin: @input-margin;
+    width: 100%;
     &:focus {
-      outline: none;
       border-color: @button-color;
+      outline: none;
     }
   }
 
-  input[type="text"],
+  input[type='text'] ,
   select {
-    display: block;
-    width: 300px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
     box-sizing: border-box;
-    border:  1px solid #ccc;
-    border-radius:  4px;
-    padding:  8px;
-    margin:  10px  0;
-    
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 8px;
+    width: 300px;
     &:focus {
-      outline: none;
       border-color: @button-color;
+      outline: none;
     }
 }}
 
-#names-table, #watchlist-table {
+#names-table ,
+#watchlist-table {
   list-style: none;
-  padding:  0;
-  margin:  0;
-  width:  100%;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 0;
+  width: 100%;
 
   .dataContainer {
+    align-items: center;
+    border-bottom: 1px solid #dddddd;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding:  10px;
-    border-bottom:  1px solid #ddd;
+    padding: 10px;
 
     &:last-child {
-      border-bottom: none;
+      border-bottom: 0;
     }
 
     &:nth-child(even) {
@@ -143,23 +146,28 @@ button {
       background-color: @table-row-hover-bg-color;
     }
 
-    .nameContainer,
-    .sexContainer,
-    .syllablesContainer,
+    .nameContainer ,
+    .sexContainer ,
+    .syllablesContainer ,
     .prioParaContainer {
-      flex:  1;
-      margin-right:  10px;
       color: @table-text-color;
+      flex: 1;
+      margin-right: 10px;
     }
 
-    .buttonContainer {
-      flex:  0;
+    .buttonContainer ,
+    .prioButtonContainer {
+      flex: 0;
+      margin-left: 10px;
+      margin-right: 10px;
     }
   }
 }
 
 div#page-navigation {
+  align-items: center;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
