@@ -127,6 +127,33 @@ async function updateNamesTable (namesData) {
   // Clear the table
   namesTable.innerHTML = '';
 
+  // Hinzufügen von Überschriften für die Liste
+  const headerElement = document.createElement('li');
+  headerElement.className = 'headerContainer';
+
+  const nameContainer = document.createElement('div');
+  nameContainer.className = 'nameContainer';
+  nameContainer.textContent = 'Vorname';
+
+  const sexContainer = document.createElement('div');
+  sexContainer.className = 'sexContainer';
+  sexContainer.textContent = 'Geschlecht';
+
+  const syllablesContainer = document.createElement('div');
+  syllablesContainer.className = 'syllablesContainer';
+  syllablesContainer.textContent = 'Silbenanzahl';
+
+  // button to copy elements to watchlist
+  const copyButtonContainer = document.createElement('div');
+  copyButtonContainer.className = 'buttonContainer';
+  copyButtonContainer.textContent = 'Zur Merkliste hinzufügen';
+
+  namesTable.appendChild(headerElement);
+  headerElement.appendChild(nameContainer);
+  headerElement.appendChild(sexContainer);
+  headerElement.appendChild(syllablesContainer);
+  headerElement.appendChild(copyButtonContainer);
+
   namesData.forEach(element => {
     const dataContainer = document.createElement('li');
     dataContainer.className = 'dataContainer';
@@ -225,6 +252,44 @@ async function updateWatchlistTable (watchlistData) {
 
   // Clear the table
   watchlistTable.innerHTML = '';
+
+  // Hinzufügen von Überschriften für die Liste
+  const headerElement = document.createElement('li');
+  headerElement.className = 'headerContainer';
+
+  const nameContainer = document.createElement('div');
+  nameContainer.className = 'nameContainer';
+  nameContainer.textContent = 'Vorname';
+
+  const sexContainer = document.createElement('div');
+  sexContainer.className = 'sexContainer';
+  sexContainer.textContent = 'Geschlecht';
+
+  const syllablesContainer = document.createElement('div');
+  syllablesContainer.className = 'syllablesContainer';
+  syllablesContainer.textContent = 'Silbenanzahl';
+
+  const prioParaContainer = document.createElement('div');
+  prioParaContainer.className = 'prioParaContainer';
+  prioParaContainer.innerText = 'Prioritätsstatus';
+
+  // Button zum anwählen der Priorisierung
+  const prioButtonContainer = document.createElement('div');
+  prioButtonContainer.className = 'prioButtonContainer';
+  prioButtonContainer.textContent = 'Vorname priorisieren';
+
+  // button to delete elements from watchlist
+  const deleteButtonContainer = document.createElement('div');
+  deleteButtonContainer.className = 'buttonContainer';
+  deleteButtonContainer.textContent = 'Vorname entfernen';
+
+  watchlistTable.appendChild(headerElement);
+  headerElement.appendChild(nameContainer);
+  headerElement.appendChild(sexContainer);
+  headerElement.appendChild(syllablesContainer);
+  headerElement.appendChild(prioParaContainer);
+  headerElement.appendChild(prioButtonContainer);
+  headerElement.appendChild(deleteButtonContainer);
 
   watchlistData.forEach(element => {
     const dataContainer = document.createElement('li');
