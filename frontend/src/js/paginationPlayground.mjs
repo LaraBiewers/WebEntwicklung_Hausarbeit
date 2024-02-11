@@ -82,6 +82,52 @@ function checkPageForButtonDisable () {
 }
 
 /// //
+//  Communication with Backend
+/// //
+
+// Buttonfunktion: Kopiere Element von names nach watchlist
+async function addToWatchlist (id) {
+  const response = await fetch('/addToWatchlist', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id })
+  });
+
+  const data = await response.json();
+  console.log(data);
+}
+
+// Buttonfunktion: Priorisiere Element von watchlist
+async function prioriseElement (id) {
+  const response = await fetch('/priorisingWatchlistElements', {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id })
+  });
+
+  const data = await response.json();
+  console.log(data);
+}
+
+// Buttonfunktion: Lösche Element von watchlist
+async function deleteFromWatchlist (id) {
+  const response = await fetch('/deleteFromWatchlist', {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ id })
+  });
+
+  const data = await response.json();
+  console.log(data);
+}
+
+/// //
 //  Code for names-table
 /// //
 
@@ -104,20 +150,6 @@ async function fetchNamesFromNames (currentPage) {
   // Update names table with filtered data
   updateNamesTable(names.namesData);
   checkPageForButtonDisable();
-}
-
-// Buttonfunktion: Kopiere Element über _ID von names nach watchlist
-async function addToWatchlist (id) {
-  const response = await fetch('/addToWatchlist', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ id })
-  });
-
-  const data = await response.json();
-  console.log(data);
 }
 
 // Build up table structure
@@ -216,34 +248,6 @@ async function fetchNamesFromWatchlist (currentPage) {
   // Update names table with filtered data
   updateWatchlistTable(names.watchlistData);
   checkPageForButtonDisable();
-}
-
-// Buttonfunktion: Priorisiere Element über _ID von watchlist
-async function prioriseElement (id) {
-  const response = await fetch('/priorisingWatchlistElements', {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ id })
-  });
-
-  const data = await response.json();
-  console.log(data);
-}
-
-// Buttonfunktion: Lösche Element über _ID von watchlist
-async function deleteFromWatchlist (id) {
-  const response = await fetch('/deleteFromWatchlist', {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ id })
-  });
-
-  const data = await response.json();
-  console.log(data);
 }
 
 // Build up table structure for watchlist-table
@@ -365,6 +369,10 @@ async function updateWatchlistTable (watchlistData) {
     deleteButtonContainer.appendChild(deleteButton);
   });
 }
+
+/// //
+//  Export-functions
+/// //
 
 export function getCurrentPage () {
   return currentPage;
