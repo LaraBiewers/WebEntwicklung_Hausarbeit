@@ -131,9 +131,9 @@ async function deleteFromWatchlist (id) {
 //  Code for names-table
 /// //
 
-// Fill <ol>-Elements
+// Fill names-table
 async function fetchNamesFromNames (currentPage) {
-  // If "complete name list" active, use all filters, otherwise only gender
+  // Filtereingaben der names-table
   const sex = document.getElementById('sex').value;
   const prefix = document.getElementById('prefix').value;
   const notPrefix = document.getElementById('notPrefix').value;
@@ -141,13 +141,13 @@ async function fetchNamesFromNames (currentPage) {
   const notSuffix = document.getElementById('notSuffix').value;
   const syllables = document.getElementById('syllables').value;
 
-  // Fetch the filtered data from names-Collection
+  // Fetch filtered data from names-Collection
   const skipValue = (currentPage - 1) * pageSize;
   const response = await fetch(`/names?skip=${skipValue}&limit=${pageSize}&sex=${sex}&prefix=${prefix}&notPrefix=${notPrefix}&suffix=${suffix}&notSuffix=${notSuffix}&syllables=${syllables}`);
   const names = await response.json();
 
+  // Befülle Tabelle dementsprechend der Eingaben
   totalPages = Math.ceil(names.count / pageSize);
-  // Update names table with filtered data
   updateNamesTable(names.namesData);
   checkPageForButtonDisable();
 }
@@ -235,17 +235,17 @@ async function updateNamesTable (namesData) {
 
 // Fill watchlist-table
 async function fetchNamesFromWatchlist (currentPage) {
-  // Use all filters
+  // Filtereingaben der watchlist-table
   const sex = document.getElementById('sex').value;
   const prio = document.getElementById('prio').value;
 
-  // Fetch the filtered data from watchlist-Collection
+  // Fetch filtered data from watchlist-Collection
   const skipValue = (currentPage - 1) * pageSize;
   const response = await fetch(`/getFromWatchlist?skip=${skipValue}&limit=${pageSize}&sex=${sex}&prio=${prio}`);
   const names = await response.json();
 
+  // Befülle Tabelle dementsprechend der Eingaben
   totalPages = Math.ceil(names.count / pageSize);
-  // Update names table with filtered data
   updateWatchlistTable(names.watchlistData);
   checkPageForButtonDisable();
 }
