@@ -1,4 +1,5 @@
 import { prioriseElement, deleteFromWatchlist } from './buttonFunctions.mjs';
+import { updateIndex } from './indexing.mjs';
 import { setTotalPageCount, getPageSize, getCurrentPage } from './pagination.mjs';
 import { checkPageForButtonDisable } from './paginationButtons.mjs';
 
@@ -150,6 +151,8 @@ async function updateWatchlistTable (watchlistData) {
 
     dataContainer.appendChild(deleteButtonContainer);
     deleteButtonContainer.appendChild(deleteButton);
+
+    updateIndex();
   });
 }
 

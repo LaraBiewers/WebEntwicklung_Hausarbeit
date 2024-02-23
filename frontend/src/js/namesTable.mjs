@@ -1,6 +1,7 @@
 import { addToWatchlist } from './buttonFunctions.mjs';
 import { checkPageForButtonDisable } from './paginationButtons.mjs';
-import { setTotalPageCount, getPageSize } from './pagination.mjs';
+import { setTotalPageCount, getPageSize, getTotalPageCount } from './pagination.mjs';
+import { updateIndex } from './indexing.mjs';
 
 // Fill names-table
 async function fetchNamesFromNames (currentPage) {
@@ -29,6 +30,7 @@ async function fetchNamesFromNames (currentPage) {
 
   // Befülle Tabelle dementsprechend der Eingaben
   setTotalPageCount(Math.ceil(names.count / getPageSize()));
+  console.log(`total Pages set to ${getTotalPageCount()}`);
   updateNamesTable(names.namesData);
   checkPageForButtonDisable();
 }
@@ -107,6 +109,8 @@ async function updateNamesTable (namesData) {
     dataContainer.appendChild(syllablesContainer);
     dataContainer.appendChild(copyButtonContainer);
     copyButtonContainer.appendChild(copyButton);
+
+    updateIndex();
   });
 }
 
