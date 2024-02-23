@@ -101,7 +101,14 @@ async function updateWatchlistTable (watchlistData) {
     // Anzeige des Prio-Status
     const prioParaContainer = document.createElement('div');
     prioParaContainer.className = 'prioParaContainer';
-    prioParaContainer.innerText = element.prio;
+    const prioStat = element.prio;
+    if (prioStat === 'true') {
+      prioParaContainer.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0  0  24  24" fill="red" width="20" height="20">
+            <path d="M12  21.35l-1.45-1.32C5.4  15.36  2  12.28  2  8.5  2  5.42  4.42  3  7.5  3c1.74  0  3.41.81  4.5  2.09C13.09  3.81  14.76  3  16.5  3  19.58  3  22  5.42  22  8.5c0  3.78-3.4  6.86-8.55  11.54L12  21.35z"/>
+        </svg>
+    `;
+    } else { prioParaContainer.innerText = ''; }
 
     // Button zum anwählen der Priorisierung
     const prioButtonContainer = document.createElement('div');
@@ -110,7 +117,11 @@ async function updateWatchlistTable (watchlistData) {
     const prioButton = document.createElement('button');
     prioButton.setAttribute('type', 'button');
     prioButton.className = 'prioButton';
-    prioButton.textContent = 'Priorisieren';
+    prioButton.innerHTML = `
+  <svg width="20" height="20" viewBox="0 0 32 32" enable-background="new 0 0 32 32" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M30.9,10.6C30.8,10.2,30.4,10,30,10h0h-9l-4.1-8.4C16.7,1.2,16.4,1,16,1v0c0,0,0,0,0,0   c-0.4,0-0.7,0.2-0.9,0.6L11,10H2c-0.4,0-0.8,0.2-0.9,0.6c-0.2,0.4-0.1,0.8,0.2,1.1l6.6,7.6L5,29.7c-0.1,0.4,0,0.8,0.3,1   s0.7,0.3,1.1,0.1l9.6-4.6l9.6,4.6C25.7,31,25.8,31,26,31h0h0h0c0.5,0,1-0.4,1-1c0-0.2,0-0.3-0.1-0.5l-2.8-10.3l6.6-7.6   C31,11.4,31.1,10.9,30.9,10.6z" fill="#FE9803"/>
+  </svg>
+  `;
 
     // button to delete elements from watchlist
     const deleteButtonContainer = document.createElement('div');
@@ -119,8 +130,8 @@ async function updateWatchlistTable (watchlistData) {
     const deleteButton = document.createElement('button');
     deleteButton.setAttribute('type', 'button');
     deleteButton.className = 'deleteFromWatchlist';
-    deleteButton.textContent = 'Vorname entfernen';
-
+    deleteButton.innerHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>`;
     // EventListener für Priorisierung
     prioButton.addEventListener('click', () => {
       // zugehörige ID des <li> Elements

@@ -1,17 +1,13 @@
-const hauptseiteInfo = 'Auf dieser Seite finden Sie eine lexikographisch aufsteigende Liste aller uns bekannten Namen. <br> Mit den oben zu sehenden Schaltflächen können Sie diese Liste entsprechend filtern oder Ihre persönliche Merkliste aufrufen!';
-const merklisteInfo = 'Auf dieser Seite finden Sie Ihre persönliche Merkliste. <br> Mit den Schaltflächen oben können Sie diese Liste entsprechend filtern oder auf unsere Hauptdatenbank zugreifen, die alle uns bekannten Vornamen enthält!';
-
 document.getElementById('Filter').addEventListener('click', toggleFilter);
 document.getElementById('Merkliste').addEventListener('click', changeToFavorites);
 document.getElementById('Namensliste').addEventListener('click', changeToDefault);
 
 // Bei Start der Anwendung
 window.addEventListener('load', (event) => {
-  // Informationen für die vollständige Namensliste
-  document.getElementById('Seiteninformation').innerHTML = hauptseiteInfo;
-
+  document.getElementById('head').style.backgroundColor = '#5db738a6';
+  document.getElementById('footer').style.backgroundColor = '#5db738a6';
   // Filter onStart ausblenden
-  document.getElementById('Filterfunktion').style.display = 'none';
+  document.getElementById('Filterfunktion').style.display = '';
   // Prio-Filter ausblenden
   document.getElementById('prioDiv').style.display = 'none';
 
@@ -33,11 +29,10 @@ function toggleFilter () {
 
 // Bei Wechsel zu Merkliste
 function changeToFavorites () {
-  // Informationen für die Merkliste
-  document.getElementById('Seiteninformation').innerHTML = merklisteInfo;
+  document.getElementById('head').style.backgroundColor = '#bf7b3f5b';
+  document.getElementById('footer').style.backgroundColor = '#bf7b3f5b';
 
-  // Filter onStart ausblenden
-  document.getElementById('Filterfunktion').style.display = 'none';
+  document.getElementById('Filterfunktion').style.display = '';
   // Alle Filter ausblenden, außer Geschlecht
   document.getElementById('prefixDiv').style.display = 'none';
   document.getElementById('notPrefixDiv').style.display = 'none';
@@ -58,11 +53,10 @@ function changeToFavorites () {
 
 // Bei Wechsel zu vollständige Namensliste
 function changeToDefault () {
-  // Informationen für die vollständige Namensliste
-  document.getElementById('Seiteninformation').innerHTML = hauptseiteInfo;
+  document.getElementById('head').style.backgroundColor = '#5db738a6';
+  document.getElementById('footer').style.backgroundColor = '#5db738a6';
 
-  // Filter onStart ausblenden
-  document.getElementById('Filterfunktion').style.display = 'none';
+  document.getElementById('Filterfunktion').style.display = '';
   // Alle Filter einblenden
   document.getElementById('prefixDiv').style.display = '';
   document.getElementById('notPrefixDiv').style.display = '';
