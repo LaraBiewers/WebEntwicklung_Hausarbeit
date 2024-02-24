@@ -62,7 +62,7 @@ async function fillData (client, csvPath) {
       .pipe(csv({ separator: ';' }))
       .on('data', (row) => {
         const syllables = syllabificate.countSyllables(row.vorname);
-        const promise = collection.insertOne({ name: row.vorname, geschlecht: row.geschlecht, silben: syllables });
+        const promise = collection.insertOne({ name: row.vorname, geschlecht: row.geschlecht, silben: syllables, addedToWatchlist: false });
         promises.push(promise);
       })
       .on('end', async () => {

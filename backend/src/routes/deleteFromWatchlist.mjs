@@ -15,11 +15,12 @@ router.delete('/', async (req, res) => {
     // Extrahiere ID aus den URL-Parametern
     const idString = req.body.id;
 
-    // Referenzieren Sie die watchlist-Collection
     const watchlistCollection = db.collection('watchlist');
+    const namesCollection = db.collection('names');
 
     // Lösche das Element mit der angegebenen ID aus der watchlist-Collection
     const item = await watchlistCollection.deleteOne({ _id: new ObjectId(idString) });
+    await namesCollection.updateOne({ _id: new ObjectId(idString) }, { $set: { addedToWatchlist: false } });
 
     // Überprüfe, ob das Element erfolgreich gelöscht wurde
     if (item.deletedCount > 0) {

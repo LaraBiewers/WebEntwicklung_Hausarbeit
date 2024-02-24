@@ -31,6 +31,7 @@ router.post('/', async (req, res) => {
     const watchlistCollection = db.collection('watchlist');
 
     // Verwenden ID, um entsprechendes Element in names-Collection zu finden
+    await namesCollection.updateOne({ _id: new ObjectId(idString) }, { $set: { addedToWatchlist: true } });
     const item = await namesCollection.findOne({ _id: new ObjectId(idString) });
 
     // Überprüfen, ob Element bereits in der watchlist-Collection vorhanden ist

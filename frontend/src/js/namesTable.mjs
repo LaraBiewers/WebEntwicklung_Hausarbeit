@@ -104,6 +104,8 @@ async function updateNamesTable (namesData) {
       // zugehörige ID des <li> Elements
       const id = dataContainer.id;
       addToWatchlist(id);
+      copyButton.disabled = true;
+      copyButton.style.backgroundColor = 'grey';
     });
 
     namesTable.appendChild(dataContainer);
@@ -113,6 +115,11 @@ async function updateNamesTable (namesData) {
     dataContainer.appendChild(syllablesContainer);
     dataContainer.appendChild(copyButtonContainer);
     copyButtonContainer.appendChild(copyButton);
+
+    if (element.addedToWatchlist === true) {
+      copyButton.disabled = true;
+      copyButton.style.backgroundColor = 'grey';
+    }
 
     updateIndex();
   });
