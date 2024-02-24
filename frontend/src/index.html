@@ -17,9 +17,9 @@
 
         <div id="flex-header">
             <img id="Logo" src="LOGO.png" alt="Webseitenlogo">
-            <button id="Filter">Filterfunktion</button>
             <button id="Namensliste">Zur Vollständige Namensliste</button>
             <button id="Merkliste">Zur Merkliste</button>
+            <button id="Filter">Filterfunktion</button>
         </div>
 
     </header>
@@ -32,19 +32,19 @@
                     stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
             <div id="sexDiv">
-                <label for="sex">Sex</label>
+                <label for="sex">Geschlecht</label>
                 <select name="sex" id="sex">
-                    <option value="">Both</option>
-                    <option value="w">female</option>
-                    <option value="m">male</option>
+                    <option value="">beide</option>
+                    <option value="w">weiblich</option>
+                    <option value="m">männlich</option>
                 </select>
             </div>
             <div id="prefixDiv">
-                <label for="prefix">Prefix</label>
+                <label for="prefix">Präfix</label>
                 <input type="text" name="prefix" id="prefix">
             </div>
             <div id="notPrefixDiv">
-                <label for="notPrefix">Not Prefix</label>
+                <label for="notPrefix">Nicht Präfix</label>
                 <input type="text" name="notPrefix" id="notPrefix">
             </div>
             <div id="suffixDiv">
@@ -52,30 +52,30 @@
                 <input type="text" name="suffix" id="suffix">
             </div>
             <div id="notSuffixDiv">
-                <label for="notSuffix">Not Suffix</label>
+                <label for="notSuffix">Nicht Suffix</label>
                 <input type="text" name="notSuffix" id="notSuffix" />
             </div>
             <div id="syllablesDiv">
-                <label for="syllables">Syllables</label>
+                <label for="syllables">Silbenanzahl</label>
                 <input id="syllables" name="syllables" type="number" inputmode="numeric" min="0"
                     oninput="validity.valid||(value='');" />
             </div>
             <div id="prioDiv">
-                <label for="prio">Display of prioritised names</label>
+                <label for="prio">Anzeige priorisierter Namen</label>
                 <select name="prio" id="prio">
-                    <option value="">Both</option>
-                    <option value="true">Only prioritised</option>
-                    <option value="false">Only non-prioritised</option>
+                    <option value="">beide</option>
+                    <option value="true">nur prioritäre</option>
+                    <option value="false">nur nicht-prioritäre</option>
                 </select>
             </div>
         </div>
         
         <div id="page-navigation">
             <button disabled id="first">
-                <span>first</span>
+                <span>Erste Seite</span>
             </button>
             <button disabled id="previous">
-                <span>previous</span>
+                <span>Vorherige Seite</span>
             </Button>
             <div id="index">
                 <span id="first-page-index" , class="page-index">1</span>
@@ -85,10 +85,10 @@
                 <span id="total-pages" , class="page-index"></span>
             </div>
             <button id="next">
-                <span>next</span>
+                <span>Nächste Seite</span>
             </button>
             <button id="last">
-                <span>last</span>
+                <span>Letzte Seite</span>
             </button>
         </div>
 
