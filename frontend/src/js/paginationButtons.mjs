@@ -39,18 +39,26 @@ function lastPage () {
 function checkPageForButtonDisable () {
   if (getCurrentPage() > 1) {
     prevButton.disabled = false;
+    prevButton.style.backgroundColor = '#4C7326';
     firstButton.disabled = false;
+    firstButton.style.backgroundColor = '#4C7326';
   } else {
     prevButton.disabled = true;
+    prevButton.style.backgroundColor = 'grey';
     firstButton.disabled = true;
+    firstButton.style.backgroundColor = 'grey';
   }
 
   if (getCurrentPage() >= getTotalPageCount()) {
     nextButton.disabled = true;
+    nextButton.style.backgroundColor = 'grey';
     lastButton.disabled = true;
+    lastButton.style.backgroundColor = 'grey';
   } else {
     nextButton.disabled = false;
+    nextButton.style.backgroundColor = '#4C7326';
     lastButton.disabled = false;
+    lastButton.style.backgroundColor = '#4C7326';
   }
 }
 
