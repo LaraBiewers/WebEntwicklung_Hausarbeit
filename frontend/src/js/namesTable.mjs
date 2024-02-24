@@ -61,7 +61,7 @@ async function updateNamesTable (namesData) {
   // button to copy elements to watchlist
   const copyButtonContainer = document.createElement('div');
   copyButtonContainer.className = 'buttonContainer';
-  copyButtonContainer.textContent = 'Favoriten';
+  copyButtonContainer.textContent = 'Vorname merken';
 
   namesTable.appendChild(headerElement);
   headerElement.appendChild(nameContainer);
