@@ -1,7 +1,7 @@
 import { fetchNamesFromNames } from './namesTable.mjs';
 import { fetchNamesFromWatchlist } from './watchlist.mjs';
 
-const pageSize = 10;
+let pageSize = 10;
 let currentPage = 1;
 let totalPageCount = 99;
 let isWatchlistActive = false;
@@ -43,6 +43,10 @@ export function setCurrentPage (newValue) {
 
 export function setTotalPageCount (newValue) {
   totalPageCount = newValue;
+}
+
+export function setPageSize (newValue) {
+  pageSize = newValue;
 }
 
 export function toggleWatchlist () {

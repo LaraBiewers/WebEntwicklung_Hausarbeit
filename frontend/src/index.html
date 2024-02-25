@@ -64,12 +64,21 @@
                 <input id="syllables" name="syllables" type="number" inputmode="numeric" min="0"
                     oninput="validity.valid||(value='');" />
             </div>
+
             <div id="prioDiv">
                 <label for="prio">Anzeige priorisierter Namen</label>
                 <select name="prio" id="prio">
                     <option value="">beide</option>
                     <option value="true">nur prioritäre</option>
                     <option value="false">nur nicht-prioritäre</option>
+                </select>
+            </div>´
+            <div id="namesShown">
+                <label for="namesShown">Angezeigte Namen</label>
+                <select name="pageS" id="pageS">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
                 </select>
             </div>
         </div>
