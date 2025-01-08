@@ -1,7 +1,7 @@
 # Inhaber
 
 Lara Biewers: lrbw1108
-Niklas Rose: nkrs2321
+Niklas Rose: nkrs2321 (github: rosniks)
 
 # Web-Entwicklung Hausarbeit
 
